@@ -9,4 +9,4 @@ def signup(request):
     return render(request,"signup.html")
 
 def login(request):
-    pass
+    return render(request,"login.html")
