@@ -20,6 +20,7 @@
             <div class="container">
                 <div class="signup-content">
                     <form method="POST" id="signup-form" class="signup-form">
+                        {% csrf_token %} 
                         <h2 class="form-title"><u>Sign In</u></h2>
                         
                         <div class="form-group">
