@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 from django.db import IntegrityError
 # Create your views here.
 
@@ -31,8 +31,6 @@ def signup(request):
 
 def userLogin(request):
     if request.method=='POST':
-        #username = request.POST.get("username")
-        #password = request.POST.get("password")
         user=authenticate(request,username=request.POST['username'],password=request.POST['password'])
         if user is not None:
             login(request,user)
@@ -41,3 +39,7 @@ def userLogin(request):
             messages.warning(request,"Username or Password Incorrect")
 
     return render(request,"login.html")
+
+def userLogout(request):
+    logout(request)
+    return redirect('login')
